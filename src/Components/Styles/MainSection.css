@@ -1,10 +1,29 @@
 .main-section {
-    flex: 1;
-    padding: 20px;
-    background-color: red;
-    margin: 10px;
-  }
+  flex: 1;
+  padding: 20px;
+  background-color: grey;
+  margin: 10px;
+}
 
-  .searchbox {
-    margin-bottom: 20px;
-  }
+.searchbox {
+  margin-bottom: 20px;
+}
+
+.dayheader {
+  height: 20px;
+  width: 20px;
+  color: white;
+  margin-left: 10px;
+  font-size: small;
+}
+
+.header {
+  background-color: #333;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.header-spacing {
+  margin-right: 390px;
+}

@@ -9,10 +9,21 @@ const SearchBox = () => {
     );
 };
 
+const TableHeader = () => {
+    return (
+        <div className='header'>
+            <div className="header-spacing" />
+            {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day, index) => (
+                <div key={index} className="dayheader">{day}</div>)
+            )}
+        </div>
+    );
+};
+
 const Table = () => {
     return (
         <>
-            {Drivers.data.map((driver, index) => (<Row key={index} driver={driver} firstRow={index===0}/>))}
+            {Drivers.data.map((driver, index) => (<Row key={index} driver={driver}/>))}
         </>
     );
 };
@@ -21,6 +32,7 @@ const MainSection = () => {
     return (
         <div className='main-section'>
             <SearchBox />
+            <TableHeader />
             <Table />
         </div>
     );
