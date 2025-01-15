@@ -34,3 +34,7 @@
     background-color: white;
     margin-left: 10px;
 }
+
+.day.active {
+    background-color: green;
+}

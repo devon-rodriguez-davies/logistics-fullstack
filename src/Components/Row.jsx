@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Styles/Row.css';
+import { sum } from '../Utils';
 
 const Row = ({driver}) => {
     // Assuming everyoe has a forename and surname. Hopefully Cher doesn't become a driver.
@@ -8,6 +9,14 @@ const Row = ({driver}) => {
     // Assuming no special characters in the registration
     const formattedRegistration = driver.vehicleRegistration.length !== 7 ? driver.vehicleRegistration
         : driver.vehicleRegistration.toUpperCase().replace(/([A-Z0-9]{4})([A-Z0-9]{3})/, '$1 $2');
+
+    const duration = sum(driver.traces.map(trace => sum(trace.activity.map(activity => activity.duration))));
+
+    const daysActive = driver.traces.filter(trace => trace.activity).map(trace => 
+        {
+            const date = new Date(trace.date);
+            return date.getDay() - 1; //Monday is 0, Sunday is 6. -1 to match index later
+        });
 
     return (
         <div className="row">
@@ -19,11 +28,11 @@ const Row = ({driver}) => {
                 {formattedName}
             </div>
             <div className="text-component registration">{formattedRegistration}</div>
-            <div className="text-component minutes">10</div>
+            <div className="text-component minutes">{duration}</div>
             {Array.from({ length: 7 }).map((_, index) => (
                 <div
                     key={index}
-                    className={`day ${true ? 'active' : ''}`}
+                    className={`day ${daysActive.includes(index) ? 'active' : ''}`}
                 />
             ))}
         </div>
