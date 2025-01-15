@@ -7,19 +7,17 @@ const Button = ({ children, ...props }) => {
   const navigate = useNavigate();
 
   const clicked = (url) => {
-      console.info("clicked", url);
       navigate(url);
   };
-  const { selected, url } = props;
-  return selected ? (<div className="button selected">{children}</div>) :
-                    (<div className="button" onClick={() => clicked(url)}>{children}</div>);
+  const { url } = props;
+  return (<div className="button" onClick={() => clicked(url)}>{children}</div>);
 }
 
 const SideMenu = () => {
   return (
     <div className="side-menu" style={{ padding: '10px', display: 'flex', flexDirection: 'column' }}>
     {Pages.data.map((page, index) => (
-        <Button key={index} selected={index==0} url={page.url}>{page.title}</Button>))}
+        <Button key={index} url={page.url}>{page.title}</Button>))}
     </div>
   );
 };

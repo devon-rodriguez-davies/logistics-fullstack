@@ -27,8 +27,6 @@ const Row = ({driver}) => {
         work: 0
     });
 
-    console.info("activityDurations", activityDurations);
-
     const daysActive = driver.traces.filter(trace => trace.activity).map(trace => 
         {
             const date = new Date(trace.date);
