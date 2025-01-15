@@ -18,6 +18,11 @@ const TableHeader = () => {
     return (
         <div className='header'>
             <div className="header-spacing" />
+            <div className="header-text">Total</div>
+            <div className="header-text">Available</div>
+            <div className="header-text">Driving</div>
+            <div className="header-text">Resting</div>
+            <div className="header-text">Working</div>
             {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day, index) => (
                 <div key={index} className="dayheader">{day}</div>)
             )}

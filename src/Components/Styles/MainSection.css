@@ -22,10 +22,18 @@
   padding: 10px;
   display: flex;
   align-items: center;
+  height: 30px;
 }
 
 .header-spacing {
-  margin-right: 390px;
+  margin-right: 320px;
+}
+
+.header-text {
+  transform: rotate(90deg);
+  color: white;
+  width: 45px;
+  font-size: small;
 }
 
 .no-drivers {

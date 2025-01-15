@@ -28,12 +28,11 @@
     font-weight: bold;
     width: 80px;
     display: flex;
-    justfy-content: center;
     align-items: center;
 }
 
 .minutes {
-    width: 50px;
+    width: 24px;
 }
 
 .day {
