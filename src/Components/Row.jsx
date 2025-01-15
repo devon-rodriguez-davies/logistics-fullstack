@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Styles/Row.css';
 import { sum } from '../Utils';
 
-const Row = ({driver}) => {
+const Row = ({firstRow, driver}) => {
     // Assuming everyoe has a forename and surname. Hopefully Cher doesn't become a driver.
     const formattedName = driver.forename + " " + driver.surname;
 
@@ -30,10 +30,13 @@ const Row = ({driver}) => {
             <div className="text-component registration">{formattedRegistration}</div>
             <div className="text-component minutes">{duration}</div>
             {Array.from({ length: 7 }).map((_, index) => (
-                <div
-                    key={index}
-                    className={`day ${daysActive.includes(index) ? 'active' : ''}`}
-                />
+                    <>
+                    {firstRow && <div className="day-label">{['M']}</div>}
+                        <div
+                            key={index}
+                            className={`day ${daysActive.includes(index) ? 'active' : ''}`}
+                        />
+                    </>
             ))}
         </div>
     );

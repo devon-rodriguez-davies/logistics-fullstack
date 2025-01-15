@@ -5,14 +5,14 @@ import Row from './Row';
 
 const SearchBox = () => {
     return (
-        <input type="text" placeholder="Search for Driver..." />
+        <input className="searchbox" type="text" placeholder="Search for Driver..." />
     );
 };
 
 const Table = () => {
     return (
         <>
-            {Drivers.data.map((driver, index) => (<Row key={index} driver={driver} />))}
+            {Drivers.data.map((driver, index) => (<Row key={index} driver={driver} firstRow={index===0}/>))}
         </>
     );
 };

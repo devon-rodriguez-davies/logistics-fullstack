@@ -28,12 +28,12 @@
     font-weight: bold;
     width: 80px;
     display: flex;
-    justify-content: center;
+    justfy-content: center;
     align-items: center;
 }
 
 .minutes {
-    width: 30px;
+    width: 50px;
 }
 
 .day {
@@ -45,4 +45,14 @@
 
 .day.active {
     background-color: green;
+}
+
+.day-label {
+
+}
+
+.parent-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
