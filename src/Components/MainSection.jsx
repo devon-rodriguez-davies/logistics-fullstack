@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Styles/MainSection.css';
 import Drivers from '../Data/drivers.json';
 import Row from './Row';
 
-const SearchBox = () => {
+const SearchBox = ({ onSearch }) => {
     return (
-        <input className="searchbox" type="text" placeholder="Search for Driver..." />
+        <input 
+            className="searchbox" 
+            type="text" 
+            placeholder="Search for Driver..." 
+            onChange={(e) => onSearch(e.target.value)} 
+        />
     );
 };
 
@@ -20,20 +25,29 @@ const TableHeader = () => {
     );
 };
 
-const Table = () => {
-    return (
+const Table = ({ searchTerm }) => {
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    const filteredDrivers = searchTerm ? Drivers.data.filter(driver => 
+        driver.vehicleRegistration.toLowerCase().includes(lowerSearchTerm) ||
+        driver.forename.toLowerCase().includes(lowerSearchTerm) ||
+        driver.surname.toLowerCase().includes(lowerSearchTerm)
+    ) : Drivers.data;
+
+    return filteredDrivers.length > 0 ? (
         <>
-            {Drivers.data.map((driver, index) => (<Row key={index} driver={driver}/>))}
+            {filteredDrivers.map((driver, index) => (<Row key={index} driver={driver}/>))}
         </>
-    );
+    ) : (<div className='no-drivers'>No drivers found</div>);
 };
 
 const MainSection = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+
     return (
         <div className='main-section'>
-            <SearchBox />
+            <SearchBox onSearch={setSearchTerm} />
             <TableHeader />
-            <Table />
+            <Table searchTerm={searchTerm} />
         </div>
     );
 };
